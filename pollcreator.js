@@ -2,8 +2,7 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const ObjectID = require('mongodb').ObjectId;
 
-const LocalStorage = require('node-localstorage').LocalStorage,
-    localStorage = new LocalStorage('./scratch');
+
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.1rk65.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -88,7 +87,6 @@ exports.viewPollGetController = async (req, res, next) => {
 
 
 exports.viewPollPostController = async (req, res, next) => {
-    const number = JSON.parse(localStorage.getItem("KEY"));
 
     await client.connect()
     const pollCollection = client.db("Poll_creation").collection("Polls")
@@ -115,8 +113,6 @@ exports.viewPollPostController = async (req, res, next) => {
             }
         }
         const result = await pollCollection.updateOne(filter, updateDoc, options);
-        const number = `f68e58a78aaa069f579416e8fcf669bccd5628`;
-        localStorage.setItem("KEY", JSON.stringify(number));
         res.redirect("/polls/" + id);
     }
     catch (e) {

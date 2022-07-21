@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+
+<div class="container">
+    
+    <form action="/create" method="post" id="form" class="my-5 border border-2 p-5 rounded-2">
+        <h3 class="text-center text-bold">Create Your Poll</h3>
+        <div class="form-group">
+            <label class="form-label fw-bold" for="title">Enter Title</label>
+        <input type="text" name="title" id="title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label class="form-label fw-bold" for="title">Enter Description</label>
+        <textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
+        
+        <p class="fw-bold mt-4">Enter your options</p>
+        <div class="option-box">
+            <div class="form-group">
+                <input type="text" name="options" id="option1" class="form-control text-input" placeholder="Option 1">
+            </div>
+        <div class="form-group">
+            <input type="text" name="options" id="option2" class="form-control text-input" placeholder="Option 2">
+        </div>
+        </div>
+        <button id="add-option" class="btn btn-secondary">Add new option</button>
+        <br><br>
+        <input class="btn btn-primary" style="min-width: 140px;" type="submit" value="Create Poll">
+    </form>
+</div>
+
+
+
+<script>
+    let option = document.getElementById("add-option");
+    let optionBox = document.querySelector(".option-box")
+    let form = document.getElementById("form")
+    let opions = document.querySelectorAll(".text-input")
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+const newOption = options.map(opt =>{
+console.log(opt.value)
+        })
+    }
+
+let currentOption = 3;
+
+    option.addEventListener("click", function(e){
+        e.preventDefault()
+createNewOption(currentOption);
+currentOption++;
+
+    })
+
+    function createNewOption(currentOption){
+        let div = document.createElement("div");
+        div.className = "form-group";
+        div.innerHTML = `<input type="text" name="options" id="option1" class="form-control text-input" placeholder="Option ${currentOption}">`
+        optionBox.appendChild(div)
+        console.log(optionBox);
+    }
+
+</script>
+
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

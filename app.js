@@ -30,7 +30,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 // root route
 app.get("/", (req, res) => {
-    res.render('home.ejs');
+    res.render('create.ejs');
 })
 
 
